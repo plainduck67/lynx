@@ -17,7 +17,7 @@ void read_and_parse(const char *filename) {
     FILE *fp = fopen(filename, "r");
     if (!fp) {
         perror("fopen");
-        return 1;
+        return;
     }
 
     char *line = NULL;
@@ -40,6 +40,7 @@ int main(int argc, char *argv[]) {
     char input[128];
     char *filename = argv[1];
     FILE *fp = fopen(filename, "w");
+
     while (1) {
         printf("> ");
         if (fgets(input, sizeof(input), stdin)) {

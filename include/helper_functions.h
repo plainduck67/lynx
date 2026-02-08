@@ -3,5 +3,6 @@
 
 int find_variable(char string[]);
 int is_variable(char string[]);
+int string_to_value(const char *str);
 
 #endif

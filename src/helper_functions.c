@@ -1,6 +1,7 @@
 #include "global_values.h"
 #include <ctype.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 // ########################################
@@ -25,6 +26,19 @@ int is_variable(char string[]) {
         }
     }
 }
+
+int string_to_value(const char *str) {
+    if (str[0] != '\0' && str[1] == '\0') {
+        if (str[0] >= '0' && str[0] <= '9') {
+            return str[0] - '0';
+        } else {
+            return -1;
+        }
+    } else {
+        return atoi(str);
+    }
+}
+
 
 // ############################################################
 // ## END OF HELPER FUNCTIONS -- FEEL FREE TO ADD AND REMOVE ##
