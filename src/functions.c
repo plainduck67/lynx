@@ -4,14 +4,14 @@
 #include <stdio.h>
 #include <string.h>
 
-// built in functions
+// built-in functions
 // feel free to add and remove functions
 // for adding functions review the documentation
 
-void add(char num1[], char num2[]) {
-    int x = string_to_value(num1);
-    int y = string_to_value(num2);
-    last = x + y;
+void add(char arg1[], char arg2[]) {
+    const int first_number = string_to_value(arg1);
+    const int second_number = string_to_value(arg2);
+    last = first_number + second_number;
 }
 
 void let(char arg1[], char arg2[]) {
@@ -25,7 +25,6 @@ void let(char arg1[], char arg2[]) {
 }
 
 void print(char arg1[], char arg2[]) {
-    int found_num;
     if (arg1[0] == '"') {
         for (int i = 1; arg1[i] != '"'; i++) {
             printf("%c", arg1[i]);
@@ -33,7 +32,7 @@ void print(char arg1[], char arg2[]) {
         printf("\n");
 
     } else if (is_variable(arg1) == 0) {
-        found_num = find_variable(arg1);
+        const int found_num = find_variable(arg1);
         printf("%d\n", var[found_num].value);
     } else {
         printf("%s\n", arg1);

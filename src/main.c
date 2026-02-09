@@ -13,14 +13,14 @@ void indexing_for_loop() {
     }
 }
 
-void read_and_parse(const char *filename) {
+void read_file(const char *filename) {
     FILE *fp = fopen(filename, "r");
-    if (!fp) {
+    if (fp == NULL) {
         perror("fopen");
         return;
     }
 
-    char *line = NULL;
+    char *line = nullptr;
     size_t cap = 0;
     ssize_t len;
     while ((len = getline(&line, &cap, fp)) != -1) {
@@ -37,10 +37,22 @@ void read_and_parse(const char *filename) {
 
 
 int main(int argc, char *argv[]) {
-    char input[128];
-    char *filename = argv[1];
-    FILE *fp = fopen(filename, "w");
+    
+    char *filename;
 
+    if (argv[1] == NULL) {
+        printf("no filename provided - enter below\n");
+        scanf("%s", filename);
+    }
+    else {
+        filename = argv[1];
+    }
+    char input[128];
+    FILE *fp = fopen(filename, "w");
+    if (fp == NULL) {
+        perror("fopen failed");
+        return 1;
+    }
     while (1) {
         printf("> ");
         if (fgets(input, sizeof(input), stdin)) {
@@ -51,7 +63,7 @@ int main(int argc, char *argv[]) {
         }
         if (strcmp(input, "run") == 0) {
             fclose(fp);
-            read_and_parse(filename);
+            read_file(filename);
             break;
         } else {
             fprintf(fp, "%s\n", input);

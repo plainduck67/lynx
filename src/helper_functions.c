@@ -1,5 +1,4 @@
 #include "global_values.h"
-#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -9,11 +8,12 @@
 // ########################################
 
 int find_variable(char string[]) {
-    for (int i = 0; i <= MAX_VARS; i++) {
+    for (int i = 0; i < MAX_VARS; i++) {
         if (strcmp(string, var[i].name) == 0) {
             return i;
         }
     }
+    return 0;
 }
 
 int is_variable(char string[]) {
@@ -25,6 +25,7 @@ int is_variable(char string[]) {
             return 1;
         }
     }
+    return 1;
 }
 
 int string_to_value(const char *str) {
