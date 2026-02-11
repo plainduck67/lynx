@@ -6,7 +6,7 @@
 void parse(const char *string) {
     char tokens[AMOUNT_OF_STRINGS][LENGTH_PER_STRING] = {0};
     int token_index = 0; // what token the program is on
-    int char_index = 0; // the index within the token
+    int char_index = 0;  // the index within the token
     for (int i = 0; string[i] != '\0'; i++) {
 
         if (string[i] == ' ') {

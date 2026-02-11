@@ -40,7 +40,6 @@ int string_to_value(const char *str) {
     }
 }
 
-
 // ############################################################
 // ## END OF HELPER FUNCTIONS -- FEEL FREE TO ADD AND REMOVE ##
 // ############################################################

@@ -1,15 +1,12 @@
 #include "parser.h"
 #include <stdio.h>
 #include <string.h>
-
+#include "global_values.h"
 #define MAX_ARGS 6
-
-char entire_program[100][60] = {0};
-int i = 0;
 
 void indexing_for_loop() {
     for (int z = 0; z < i; z++) {
-        parse(entire_program[z]);
+        parse(entire_program[z + lines_skipped]);
     }
 }
 
@@ -20,7 +17,7 @@ void read_file(const char *filename) {
         return;
     }
 
-    char *line = nullptr;
+    char *line = NULL;
     size_t cap = 0;
     ssize_t len;
     while ((len = getline(&line, &cap, fp)) != -1) {
@@ -34,18 +31,20 @@ void read_file(const char *filename) {
     fclose(fp);
 }
 
-
-
 int main(int argc, char *argv[]) {
-    
-    char *filename;
 
+    char filename[50];
     if (argv[1] == NULL) {
         printf("no filename provided - enter below\n");
-        scanf("%s", filename);
-    }
-    else {
-        filename = argv[1];
+        if (fgets(filename, sizeof(filename), stdin)) {
+            size_t len = strlen(filename);
+            if (len > 0 && filename[len - 1] == '\n') {
+                filename[len - 1] = '\0';
+            }
+        }
+
+    } else {
+        strcpy(filename, argv[1]);
     }
     char input[128];
     FILE *fp = fopen(filename, "w");
@@ -61,10 +60,10 @@ int main(int argc, char *argv[]) {
                 input[len - 1] = '\0';
             }
         }
+
         if (strcmp(input, "run") == 0) {
             fclose(fp);
             read_file(filename);
-            break;
         } else {
             fprintf(fp, "%s\n", input);
         }

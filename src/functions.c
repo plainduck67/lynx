@@ -3,7 +3,7 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
-
+#include "parser.h"
 // built-in functions
 // feel free to add and remove functions
 // for adding functions review the documentation
@@ -24,6 +24,14 @@ void let(char arg1[], char arg2[]) {
     var_count++;
 }
 
+void ifequal(char arg1[], char arg2[]) {
+    int num1 = string_to_value(arg1);
+    int num2 = string_to_value(arg2);
+    if (num1 == num2) {
+       parse(entire_program[i]);
+       lines_skipped++;
+    }
+}
 void print(char arg1[], char arg2[]) {
     if (arg1[0] == '"') {
         for (int i = 1; arg1[i] != '"'; i++) {

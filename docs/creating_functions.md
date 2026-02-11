@@ -60,10 +60,29 @@ struct funcptrs all_functions[] = {
 };
 ```
 
+
 append your line below the others:
 ```c
 {"my_function", my_function},
 ```
+
+also add it as an enum
+
+
+```c
+enum funcs {
+    ADD,
+    PRINT,
+    LET,
+    NUM_FUNCS
+};
+```
+append your line above NUM_FUNCS
+
+```c
+MY_FUNCTION
+```
+
 
 ## that's it!
 

@@ -2,7 +2,12 @@
 #include <stdio.h>
 #include <string.h>
 
-#define NUM_FUNCS 3
+enum funcs {
+    ADD,
+    PRINT,
+    LET,
+    NUM_FUNCS
+};
 
 struct func_ptrs {
     const char *name;
@@ -16,7 +21,8 @@ struct func_ptrs all_functions[] = {
 };
 
 void lookup(const char *name, char arg1[], char arg2[]) {
-    for (int i = 0; i < NUM_FUNCS; i++) {
+    enum funcs number = NUM_FUNCS;
+    for (int i = 0; i < number; i++) {
         if (strcmp(name, all_functions[i].name) == 0) {
             all_functions[i].func(arg1, arg2);
             return;
