@@ -46,3 +46,29 @@ void print(char arg1[], char arg2[]) {
         printf("%s\n", arg1);
     }
 }
+
+void sub(char arg1[], char arg2[]) {
+    int num1 = string_to_value(arg1);
+    int num2 = string_to_value(arg2);
+    last = num1 - num2;
+}
+
+void mul(char arg1[], char arg2[]) {
+    int num1 = string_to_value(arg1);
+    int num2 = string_to_value(arg2);
+    last = num1 * num2;
+}
+
+void div(char arg1[], char arg2[]) {
+    int num1 = string_to_value(arg1);
+    int num2 = string_to_value(arg2);
+    last = num1 / num2;
+}
+
+void scan(char arg1[], char arg2[]) {
+    char temp[100];
+    scanf("%s", temp);
+    strcpy(var[var_count].name, arg1);
+    var[var_count].value = string_to_value(temp);
+    var_count++;
+}

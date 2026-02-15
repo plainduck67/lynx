@@ -43,7 +43,11 @@ int main(int argc, char *argv[]) {
             }
         }
 
-    } else {
+    }
+    else if (strcmp(argv[1], "run") == 0) {
+        read_file(argv[2]);
+    }
+    else {
         strcpy(filename, argv[1]);
     }
     char input[128];
