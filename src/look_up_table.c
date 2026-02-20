@@ -6,10 +6,6 @@ enum funcs {
     ADD,
     PRINT,
     LET,
-    SCAN,
-    MUL,
-    SUB,
-    DIV,
     NUM_FUNCS
 };
 
@@ -22,10 +18,6 @@ struct func_ptrs all_functions[] = {
     {"add", add},
     {"print", print},
     {"let", let},
-    {"scan", scan},
-    {"mul", mul},
-    {"sub", sub},
-    {"div", div},
 };
 
 void lookup(const char *name, char arg1[], char arg2[]) {

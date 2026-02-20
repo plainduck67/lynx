@@ -36,3 +36,14 @@ print text:
 ```lynx
 print "hello world"
 ```
+
+## 3. add
+
+add allows you to add 2 numbers together, the output can be captured
+
+```lynx
+add 1 2
+let x
+print x
+```
+that should print "3" to the console

@@ -35,13 +35,7 @@ scripting languages are undeniably usefull, but LYNX allows you to make c a scri
 It is very simple to use LYNX, if you have a program already written in a different editor, you can type:
 
 ```bash
-./lynx filename.lynx
-```
-
-then type:
-
-```bash
-run
+./lynx run filename.lynx
 ```
 
 if you do not have a program written, you can type:

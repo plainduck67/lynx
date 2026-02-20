@@ -1,12 +1,21 @@
 #include "parser.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "global_values.h"
+
 #define MAX_ARGS 6
 
 void indexing_for_loop() {
     for (int z = 0; z < i; z++) {
-        parse(entire_program[z + lines_skipped]);
+        if (strcmp(entire_program[z], "end") == 0) {
+            exit(1);
+
+        }
+        else {
+
+            parse(entire_program[z + lines_skipped]);
+        }
     }
 }
 
@@ -44,9 +53,11 @@ int main(int argc, char *argv[]) {
         }
 
     }
+
     else if (strcmp(argv[1], "run") == 0) {
         read_file(argv[2]);
     }
+
     else {
         strcpy(filename, argv[1]);
     }
@@ -66,6 +77,8 @@ int main(int argc, char *argv[]) {
         }
 
         if (strcmp(input, "run") == 0) {
+
+            fprintf(fp, "end");
             fclose(fp);
             read_file(filename);
         } else {
